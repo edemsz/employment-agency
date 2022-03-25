@@ -36,13 +36,12 @@ Middleware-ek
     modifyJob: a paraméterben kapott id-jú munka adatait a megadottakra módosítja
     deleteJob: törli a munkát
 
-    redirect: átirányít a megadott végpontra
     render: a megadott oldalt kirendereli, ez felel a megjelenítésért
 
 Routing és middleware-ek kapcsolata:
     GET /companies -> getCompanies,render("companies")
     GET /companies/new -> render("companydetails")
-    POST /companies/new -> addCompany,redirect(companies)
+    POST /companies/new -> addCompany,render(companies)
     GET /company/:id -> getCompany,render("companydetails")
     POST /company/:id -> getCompany,modifyCompany,render("companydetails")
     DELETE /company/:id -> deleteCompany,render("companies")
@@ -50,7 +49,7 @@ Routing és middleware-ek kapcsolata:
 
     GET /jobs -> getJobs,render("jobs")
     GET /jobs/new -> render("jobdetails")
-    POST /jobs/new -> addJobs,redirect(jobs)
+    POST /jobs/new -> addJobs,render(jobs)
     GET /jobs/:id -> getJob,render("jobdetails")
     POST /jobs/:id -> getJob,modifyJob,render("jobdetails")
     DELETE /jobs/:id -> deleteJob,render("jobs")
