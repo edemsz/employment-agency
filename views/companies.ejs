@@ -1,0 +1,18 @@
+<%- include('header') %>
+
+
+<div style="margin: 40px 3px 20px 0; ">
+  <b><h2>Munkák</b>
+  <button class="button button_new" onclick="location.href=`/companies/new`">Új cég felvétele</button></h2>
+</div>
+
+<div style="font-size: larger;">
+  <ul>
+    <% companies.forEach(function(comp){ %>
+      <li><%= comp.name %> <a href='company/<%=comp.id%>'> Részletek</a> </li>
+  
+      <%});%>
+  </ul>
+</div>
+
+

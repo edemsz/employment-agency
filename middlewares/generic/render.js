@@ -1,6 +1,7 @@
 module.exports = function (page) {
 
-    return (req,res,next)=>{
-        res.end(`Rendering ${page}`);
-    }
+    return function (req, res) {
+        res.render(page, res.tpl);
+      };
+    
 };

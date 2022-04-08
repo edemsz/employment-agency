@@ -8,7 +8,7 @@ Routing
     GET /company/:id -> egy adott cég adatait bemutató form
     POST /company/:id -> egy adott cég adatait módosító végpont, ide kell küldeni
         a módosítandó cég adatait
-    DELETE /company/:id -> adott id-jű céget törli, majd átirányít az
+    POST /company/:id/delete -> adott id-jű céget törli, majd átirányít az
         összes cég képernyőjére (/companies)
 
 
@@ -20,7 +20,7 @@ Routing
     GET /job/:id -> egy adott munka adatait bemutató form
     POST /job/:id -> egy adott munka adatait módosító végpont, ide kell küldeni
         a módosítandó munka adatait
-    DELETE /job/:id -> adott id-jű munkát törli, majd átirányít az
+    POST /job/:id/delete -> adott id-jű munkát törli, majd átirányít az
         összes munka képernyőjére (/jobs)
 
 Middleware-ek
@@ -44,7 +44,7 @@ Routing és middleware-ek kapcsolata:
     POST /companies/new -> addCompany,render(companies)
     GET /company/:id -> getCompany,render("companydetails")
     POST /company/:id -> getCompany,modifyCompany,render("companydetails")
-    DELETE /company/:id -> deleteCompany,render("companies")
+    POST /company/:id/delete -> deleteCompany,render("companies")
 
 
     GET /jobs -> getJobs,render("jobs")
@@ -52,18 +52,32 @@ Routing és middleware-ek kapcsolata:
     POST /jobs/new -> addJobs,render(jobs)
     GET /jobs/:id -> getJob,render("jobdetails")
     POST /jobs/:id -> getJob,modifyJob,render("jobdetails")
-    DELETE /jobs/:id -> deleteJob,render("jobs")
+    POST /jobs/:id/delete -> deleteJob,render("jobs")
 
 */
 
 let express = require('express');
 let app = express();
 
+let session = require('express-session');
+let bodyParser = require('body-parser');
+
+app.set('view engine', 'ejs');
+
+
 app.use(express.static('static'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+
 let port=3000;
 
 
 require('./routes/companies')(app);
+require('./routes/jobs')(app);
 
 
 let server = app.listen(port, () => {

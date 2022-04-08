@@ -1,0 +1,27 @@
+<%- include('header') %>
+
+<form method="post" action="/jobs/new" id="edit-job"">
+  <div style="margin: 40px 3px 20px 0; ">
+    Új munka:
+    <br>
+    <input style="font-weight: bold;" type="text" id="name" name="name" value="">
+    <button class="button button_new"  type="submit" form="edit-job"  value="Submit" > Felvesz</button>
+
+  </div>
+
+  <div style="font-size: larger;">
+    <ul>
+      <li>Cég: <select name="company">
+
+        <% companies.forEach(function (comp){ %>
+          <option   value="<%= comp.name %>"> <%= comp.name %></option>
+          <% }); %>
+      
+      </select> </li>
+      <li>Munkavégzés helye: <input type="text" name="place" value="">  </li>
+      <li>Bruttó órabér:  <input type="text" name="salary" value=""> </li>
+    </ul>
+  </div>
+</form>
+
+

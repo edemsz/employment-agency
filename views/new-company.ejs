@@ -1,0 +1,23 @@
+<%- include('header') %>
+
+
+<form method="post" action="/companies/new" id="new-comp"">
+  Új cég:
+<br>
+    <div style="margin: 40px 3px 20px 0; ">
+      Cégnév: <input style="font-weight: bold;" type="text" id="name" name="name" value="">
+      <button class="button button_new"  type="submit" form="new-comp"  value="Submit" > Felvétel</button>
+  
+    </div>
+  
+    <div style="font-size: larger;">
+      <ul>
+        <li>Székhely: <input type="text" name="seat" value=""> </li>
+        <li>Cégjegyzékszám:  <input type="text" name="comp_num" value=""> </li>
+        <li>Adószám: <input type="text" name="vat_number" value="">  </li>
+        <li>Jutalék: <input type="text" name="commission" value="">  </li>
+      </ul>
+    </div>
+  </form>
+  
+  

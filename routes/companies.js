@@ -13,7 +13,7 @@ module.exports = function (app) {
     );
 
     app.get("/companies/new",
-        renderMW("companydetails")
+        renderMW("new-company")
     );
 
     app.post("/companies/new",
@@ -30,7 +30,7 @@ module.exports = function (app) {
         renderMW("companydetails")
     );
 
-    app.delete("/company/:id",
+    app.post("/company/:id/delete",
         deleteCompanyMW(),
         renderMW(`companies`)
     );
