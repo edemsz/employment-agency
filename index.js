@@ -76,8 +76,7 @@ app.use(bodyParser.urlencoded({
 let port=3000;
 
 
-require('./routes/companies')(app);
-require('./routes/jobs')(app);
+require('./routes/index')(app);
 
 
 let server = app.listen(port, () => {

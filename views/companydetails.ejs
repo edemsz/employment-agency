@@ -1,13 +1,17 @@
 
 <%- include('header') %>
+<br>
+<br>
+<br>
+<br>
 
+<a href="/company/<%= comp.id %>/delete"><button class="button"> Töröl</button></a>
 
-<form method="post" action="/company/1" id="edit-comp"">
+<form method="post" action="/company/<%=comp.id%>" id="edit-comp"">
 
   <div style="margin: 40px 3px 20px 0; ">
     <input style="font-weight: bold;" type="text" id="name" name="name" value="<%= comp.name %>">
     <button class="button button_new"  type="submit" form="edit-comp"  value="Submit" > Módosít</button>
-    <a data-method="delete" href="/company/<%= comp.id %>/delete"><button class="button"> Töröl</button></a>
 
   </div>
 
