@@ -1,7 +1,16 @@
-module.exports = function (id) {
+const requireOption = require("../requireOption");
+
+module.exports = function (objectrepository) {
 
     return (req,res,next)=>{
-        console.log(`törlöm a munkát`);
-        return next();
-    }
+        const jobModel = requireOption(objectrepository, "jobModel");
+
+        jobModel.deleteOne({ _id: req.params.id }, function (err, job) {
+    
+          if (err) {
+            return next(err);
+          }
+          return next();
+        });
+        }
 };

@@ -1,25 +1,23 @@
-module.exports = function () {
+const requireOption = require("../requireOption");
+
+
+
+module.exports = (objectrepository) => {
+
+    const jobModel = requireOption(objectrepository, 'jobModel');
 
     return function (req, res, next) {
-        let jobs=[
-            {
-                id:1,
-                name:"Benzinkutas",
-                place:"home office",
-                salary:"1234",
-                company_id:"1",
-            },
-            {
-                id:2,
-                name:"Gyakornok",
-                place:"home office",
-                salary:"1344",
-                company_id:"2",
-            },
-        ];
-        console.log("getjobs");
-        res.locals.jobs=jobs;
-        return next();
+
+        jobModel.find({}).exec(function (err, results) {
+            if (err) {
+                return next(new Error('Error getting jobs'));
+            }
+
+            res.locals.jobs = results;
+            return next();
+        });
     };
+
+
 
 };

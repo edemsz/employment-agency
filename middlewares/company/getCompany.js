@@ -5,7 +5,7 @@ module.exports = function (objectRepository) {
     const companyModel = requireOption(objectRepository, 'companyModel');
 
 
-    return function (req, res, next) {
+    return (req, res, next) => {
 
       companyModel.findOne({ _id: req.params.id })
         .exec(function (err, company) {
@@ -19,7 +19,7 @@ module.exports = function (objectRepository) {
           } else {
             return res.redirect("/companies");
           }
-        });
+      });
     }
 
 

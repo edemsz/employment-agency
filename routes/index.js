@@ -46,6 +46,7 @@ module.exports = function (app) {
     app.post("/company/:id",
         getCompanyMW(objectRepository),
         modifyCompanyMW(objectRepository),
+        getCompanyMW(objectRepository),
         renderMW("companydetails")
     );
 
@@ -58,7 +59,7 @@ module.exports = function (app) {
 
 
     app.get('/jobs',
-        getJobsMW(),
+        getJobsMW(objectRepository),
         renderMW("jobs")
     );
 
@@ -68,25 +69,27 @@ module.exports = function (app) {
     );
 
     app.post("/jobs/new",
-        addJobMW(),
-        getJobsMW(),
+        addJobMW(objectRepository),
+        getJobsMW(objectRepository),
         renderMW("jobs")
     );
     app.get("/job/:id",
-        getJobMW(),
+        getJobMW(objectRepository),
         getCompaniesMW(objectRepository),
         renderMW("jobdetails")
     );
 
     app.post("/job/:id",
-        getJobMW(),
-        modifyJobMW(),
+        getJobMW(objectRepository),
+        modifyJobMW(objectRepository),
+        getJobMW(objectRepository),
         getCompaniesMW(objectRepository),
         renderMW("jobdetails")
     );
 
-    app.post("/job/:id/delete",
-        deleteJobMW(),
+    app.get("/job/:id/delete",
+        deleteJobMW(objectRepository),
+        getJobsMW(objectRepository),
         renderMW(`jobs`)
     );
 

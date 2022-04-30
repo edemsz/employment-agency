@@ -4,7 +4,7 @@ const requireOption = require("../requireOption");
 
 module.exports = (objectrepository) => {
 
-    var companyModel = requireOption(objectrepository, 'companyModel');
+    const companyModel = requireOption(objectrepository, 'companyModel');
 
     return function (req, res, next) {
 
