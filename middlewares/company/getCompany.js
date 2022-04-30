@@ -1,4 +1,24 @@
-module.exports = function (id) {
+const requireOption = require("../requireOption");
+
+
+module.exports = function (objectRepository) {
+
+    const companyModel = requireOption(objectrepository, 'companyModel');
+
+    companyModel.findOne({ _id: req.params.id })
+      .exec(function (err, company) {
+        if (typeof company !== "undefined") {
+          if (err) {
+            return next(err);
+          }
+
+          res.locals.company = company;
+          return next();
+        } else {
+          return res.redirect("/companies");
+        }
+      });
+
 
     return (req,res,next)=>{
         let company={
