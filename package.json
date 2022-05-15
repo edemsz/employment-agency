@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
   },
   "author": "",
   "license": "ISC",
@@ -23,5 +24,9 @@
     "url": "https://github.com/edemsz/employment-agency/issues"
   },
   "homepage": "https://github.com/edemsz/employment-agency#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
+  }
 }

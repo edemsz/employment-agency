@@ -94,5 +94,9 @@ module.exports = function (app) {
     );
 
 
+    app.get('/',
+        getCompaniesMW(objectRepository),
+        renderMW("companies")
+    );
 
 }
